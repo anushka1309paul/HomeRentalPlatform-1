@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="{{url_for('static',filename='details.css')}}">
+   <title>Dashboard</title>
+  </head>
+  <body>
+
+
+
+<div id="wrapper">
+    <div class="overlay"></div>
+
+    <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
+      <ul class="nav sidebar-nav">
+        <div class="sidebar-header">
+            <div class="sidebar-brand">
+              <a href="/"><img class="logo31" src="{{url_for('static',filename='./images/logo3.jpg')}}" alt="">Home</a>
+            </div>
+        </div>
+        <li><a href="/userdashboard">Dashboard</a></li>
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle"  data-toggle="dropdown">User <span class="caret"></span></a>
+      <ul class="dropdown-menu animated fadeInLeft" role="menu">
+             <div class="dropdown-header">{{username}}</div>
+             <li class="dropdown-header">{{email1}}</li>
+       <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+       </ul>
+       </li>
+          <li><a href="/userdashboard/apmt_reg/">Register</a></li>
+          <li><a href="{{ url_for('ownerpropdetails') }}">Details/Update</a></li>
+          <li><a href="{{ url_for('approval') }}">Approve Apartment</a></li>
+          <li><a href="{{ url_for('approval2') }}">Approve Room</a></li>
+       </ul>
+   </nav>
+
+         <div id="page-content-wrapper">
+             <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+                 <span class="hamb-top"></span>
+                 <span class="hamb-middle"></span>
+                 <span class="hamb-bottom"></span>
+             </button>
+             <div class="container">
+                 <div class="row">
+                     <div class="col-lg-8 col-lg-offset-2">
+                         <div id="s1">
+                             <h1>DETAILS/UPDATE</h1>
+                         </div>
+                     </div>
+                 </div>
+                         <!-- <div id="s2">
+                             <a href="{{ url_for('ownerrooms')}}">List of Registered Rooms</a>
+                         </div>
+                         <div id="s2">
+                             <a href="{{ url_for('ownerapartments')}}">List of Registered Apartments</a>
+                         </div> -->
+                        
+                             <div class="row">
+                              <div class="col-md-5">
+                                <div class="card text-center" style="width:290px;height:500px">
+                                    <img class="card-img-top" src="{{url_for('static', filename='./images/apart1.jpg')}}" alt="Card image" style="width:100%;height:270px;">
+                                    <div class="card-body">
+                                      <h4 class="card-title">Registered Apartments</h4>
+                                      <p class="card-text">List of Apartments registered by you.You can view, edit or delete entries.</p>
+                                      <a href="{{ url_for('ownerapartments')}}" class="btn btn-success">View List</a>
+                                    </div>
+                                  </div>
+                              </div>
+                             <br>
+                             <div class="col-md-6">
+                             <div class="card text-center" style="width: 290px;height:500px">
+                                <img class="card-img-top" src="{{url_for('static', filename='./images/Room1.jpg')}}" alt="Card image" style="width:100%;height:270px;">
+                                <div class="card-body">
+                                    <h4 class="card-title">Registered Rooms</h4>
+                                    <p class="card-text">List of Rooms registered by you.You can view, edit or delete entries.</p>
+                                    <a href="{{ url_for('ownerrooms')}}" class="btn btn-success">View List</a>
+                                </div>
+                             </div>
+                             </div>
+                             </div>
+
+             </div>
+         </div>
+
+
+     </div>
+
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="{{url_for('static',filename='dashboard.js')}}"></script>
+  </body>
+</html>

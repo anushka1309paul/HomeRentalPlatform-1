@@ -13,8 +13,7 @@
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
 
 	<!-- Css file  -->
-	<link rel="stylesheet" href="{{url_for('static',filename='ApmtReg.css')}}">
-	<link rel="stylesheet" href="{{url_for('static',filename='userdashboard.css')}}">
+	<link rel="stylesheet" href="{{url_for('static',filename='Property_reg.css')}}">
 
 	
 </head>
@@ -31,7 +30,7 @@
         <div class="sidebar-header">
         <div class="sidebar-brand">
           <a href="/"><img class="logo31" src="{{url_for('static',filename='./images/logo3.jpg')}}" alt="">Home</a></div></div>
-        <li><a href="#">Dashboard</a></li>
+        <li><a href="/userdashboard">Dashboard</a></li>
         <li class="dropdown">
         <a href="#" class="dropdown-toggle"  data-toggle="dropdown">User <span class="caret"></span></a>
       <ul class="dropdown-menu animated fadeInLeft" role="menu">
@@ -40,8 +39,10 @@
        <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
        </ul>
        </li>
-          <li><a href="{{ url_for('details') }}">Details/Update</a></li>
-       <li><a href="{{ url_for('complaintlist') }}">Complaints</a></li>
+          <li><a href="/userdashboard/apmt_reg/">Register</a></li>
+       <li><a href="{{ url_for('ownerpropdetails') }}">Details/Update</a></li>
+       <li><a href="{{ url_for('approval') }}">Approve Apartment</a></li>
+       <li><a href="{{ url_for('approval2') }}">Approve Room</a></li>
        </ul>
    </nav>
 
@@ -59,7 +60,7 @@
             <form id="Areg" method="POST" action="{{url_for('editapart',id=id)}}" enctype="multipart/form-data">
 		<h1 id="head">Changes for Apartment Room</h1>
 
-	<p>Please make the required changes</p><br>
+
 	{% for i in datas%}
 	<label for="Aname"><b>Apartment Name</b></label><br>
 		<input aria-labelledby="Areg" type="text" class="form-control" placeholder="Apartment Name" id="Aname" name="name" value="{{i[1]}}" required><br>
@@ -67,8 +68,8 @@
 		<input aria-labelledby="Areg" type="email" class="form-control" placeholder="Email" id="email" name="Email" value="{{i[2]}}" required><br>
 	<label for="Mobile"><b>Mobile No.</b></label><br>
 		<input aria-labelledby="Areg" type="number" class="form-control" placeholder="Mobile" id="Mobile" name="Mobile" value="{{i[3]}}" required><br>
-	<label for="Plot"><b>Room Number</b></label><br>
-		<input aria-labelledby="Areg" type="number" class="form-control" placeholder="Room Number" id="Plot" name="Plot" value="{{i[4]}}" required><br>
+	<label for="Plot"><b>Plot Number</b></label><br>
+		<input aria-labelledby="Areg" type="number" class="form-control" placeholder="Plot Number" id="Plot" name="Plot" value="{{i[4]}}" required><br>
 	<label for="Address"><b>Address</b></label><br>
 		<input  aria-labelledby="Areg" type="text" class="form-control" placeholder="Enter your Address" id="Address" name="Address" value="{{i[5]}}" required><br>
 	<label for="Landmark"><b>Landmark</b></label><br>
@@ -81,7 +82,7 @@
 		<input  aria-labelledby="Areg" type="text" class="form-control" placeholder="State" id="State" name="State" value="{{i[9]}}" required><br>
 	<label for="Country"><b>Country</b></label><br>
 		<input  aria-labelledby="Areg" type="text" class="form-control" placeholder="Country" id="Country" name="Country" value="{{i[10]}}" required><br>
-    <label for="Atype"><b>Appartment type</b></label><br>
+    <label for="Atype"><b>Apartment type</b></label><br>
 		<input  aria-labelledby="Areg" type="text" class="form-control" placeholder="Studio,Alcove Studio,Loft,Duplex etc" id="Atype" name="Atype" value="{{i[11]}}" required><br>
 
     <div class = "control">
@@ -124,7 +125,7 @@
   <label for="file" style="padding-top: 1%;"><b>Upload Image</b></label><br>
     <input aria-labelledby="Areg" type="file" id="file" name="file" style="border-bottom:none; margin-left: 2%; color:#fff;" required><br>
       {%endfor%} 
-        <div class="msg" style="color:rgb(8, 23, 41); justify-content:centre;">{{msg}}</div>
+        <div class="msg" style="color:#fff; margin-left:3%; justify-content:centre;">{{msg}}</div>
 		<button  aria-labelledby="Areg" type="submit" class="btn">Save Changes</button>
               
 	</form>

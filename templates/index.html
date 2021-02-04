@@ -10,15 +10,10 @@
 <body>
         <nav id="header-nav" class="navbar navbar-expand-md sticky-top">
         <div class="container-fluid">
-                <!-- <div class="navbar-header"> -->
                     <a class="navbar-brand" href="/"><img class="logo" src="{{url_for('static', filename='./images/logo3.jpg')}}" alt=""><strong class="heading">Home Rental Platform</strong></a>
                 <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive" >
                   <span class="navbar-toggler-icon "></span>
-                  <!-- <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span> -->
                 </button>
-            <!-- </div> -->
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 
                 <ul class="navbar-nav">
@@ -106,7 +101,6 @@
                                     <div class="col-auto">
                                         <i class="fas fa-search h4 text-body"></i>
                                     </div>
-                                    <!--end of col-->
                                     <div class="col">
                                         <input name="location" class="form-control form-control-sm form-control-borderless" type="search" placeholder="STATE">
                                         <br>
@@ -131,8 +125,6 @@
                                             <button class="btn btn-sm btn-primary" type="submit">Search</button>
                                         </div>
                                     </div>
-                                    <!--end of col-->
-                                    <!--end of col-->
                                 </div>
                 </form>
             </div>
@@ -144,7 +136,7 @@
                     <div class="card card-sm ">
                         <div class="dbox">
                            {% if op=="a" %}
-                                 <div class="img_search"><img src="{{url_for('static', filename='./images/house.jpg')}}"></div>
+                                 <div class="img_search"><img src="{{url_for('static', filename='./Uploads/'+u.image)}}" height="210px" width="240px"></div>
                                  <div class=" detail">
                                      <p class="1">Name of apartment: {{u['Aname']}}</p>
                                      <p class="2">Plot_no: {{u['Plot_no']}}</p>
@@ -159,14 +151,15 @@
                                      <p class="11">Availability: {{u['Availability']}}</p>
                                      <p class="12">Facilities: {{u['Facilities']}}</p>
                                      <p class="13">Description: {{u['Dscrption']}}</p>
-                                     {%if username!="admin"%}
-                                     <a class="buy" href="{{url_for('Buy_property',id=u['A_ID'])}}">Apply</a>
+                                     {%if username!="admin" and username!=u['Username']%}
+                                     <a class="buy" href="{{url_for('Buy_property',id=u['A_ID'])}}"><button class="btn btn-sm btn-primary">Apply</button></a>
+                                     <a class="buy" href="{{url_for('complaints',id=u['A_ID'])}}"><button class="btn btn-sm btn-primary">Complaints</button></a>
                                      {%endif%}
                                  </div>
                             {%else%}
-                                <div class="img_search"><img src="{{url_for('static', filename='./images/B1.jpg')}}"></div>
+                                <div class="img_search"><img src="{{url_for('static', filename='./Uploads/'+u.image)}}" height="210px" width="240px"></div>
                                  <div class=" detail">
-                                     <p class="1">Plot_no: {{u['Plot_no']}}</p>
+                                     <p class="1">Room number: {{u['Room_no']}}</p>
                                      <p class="2">Address: {{u['Address']}}</p>
                                      <p class="3">City: {{u['City']}}</p>
                                      <p class="4">Pincode: {{u['Pincode']}}</p>
@@ -176,8 +169,9 @@
                                      <p class="8">Rent: {{u['Rent']}}</p>
                                      <p class="9">Facilities: {{u['Facilities']}}</p>
                                      <p class="10">Description: {{u['Dscrption']}}</p>
-                                     {%if username!="admin"%}
-                                     <a class="buy" href="#">Apply</a>
+                                     {%if username!="admin" and username!=u['Username']%}
+                                     <a class="buy" href="{{url_for('Buy_propertyroom',id=u['R_ID'])}}"><button class="btn btn-sm btn-primary">Apply</button></a>
+                                     <a class="buy" href="{{url_for('complaints2',id=u['R_ID'])}}"><button class="btn btn-sm btn-primary">Complaints</button></a>
                                      {%endif%}
                                  </div>
                             {%endif%}
